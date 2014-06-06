@@ -14,6 +14,7 @@
 		0A21FFA11940EE61006D5AE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A21FF9F1940EE61006D5AE9 /* Main.storyboard */; };
 		0A21FFA31940EE61006D5AE9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A21FFA21940EE61006D5AE9 /* Images.xcassets */; };
 		0A21FFAF1940EE61006D5AE9 /* _048Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A21FFAE1940EE61006D5AE9 /* _048Tests.swift */; };
+		0AFEE5241940F171007249E4 /* GameRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFEE5231940F171007249E4 /* GameRect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		0A21FFA81940EE61006D5AE9 /* 2048Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 2048Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A21FFAD1940EE61006D5AE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A21FFAE1940EE61006D5AE9 /* _048Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _048Tests.swift; sourceTree = "<group>"; };
+		0AFEE5231940F171007249E4 /* GameRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameRect.swift; path = ../GameRect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		0A21FF941940EE61006D5AE9 /* 2048 */ = {
 			isa = PBXGroup;
 			children = (
+				0AFEE5231940F171007249E4 /* GameRect.swift */,
 				0A21FF971940EE61006D5AE9 /* AppDelegate.swift */,
 				0A21FF991940EE61006D5AE9 /* GameScene.sks */,
 				0A21FF9B1940EE61006D5AE9 /* GameScene.swift */,
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A21FF9C1940EE61006D5AE9 /* GameScene.swift in Sources */,
+				0AFEE5241940F171007249E4 /* GameRect.swift in Sources */,
 				0A21FF9E1940EE61006D5AE9 /* GameViewController.swift in Sources */,
 				0A21FF981940EE61006D5AE9 /* AppDelegate.swift in Sources */,
 			);
@@ -407,6 +411,7 @@
 				0A21FFB41940EE61006D5AE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0A21FFB51940EE61006D5AE9 /* Build configuration list for PBXNativeTarget "2048Tests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +420,7 @@
 				0A21FFB71940EE61006D5AE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
