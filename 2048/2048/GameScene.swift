@@ -80,6 +80,7 @@ class GameScene: SKScene {
         gridCell.position = CGPoint(x: xPos, y: yPos)
         
         self.addChild(gridCell)
+        self.addChild(gridCell.getLabel())
 
         
         
