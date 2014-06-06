@@ -69,8 +69,6 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        
-       
         let i = arc4random() % 3
         let j = arc4random() % 3
         
