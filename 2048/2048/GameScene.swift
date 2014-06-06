@@ -10,6 +10,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     var counter:Float = 0
+    var singleCellSize: CGFloat = 0
     let GRID_MARGIN:Float = 10
     
     override func didMoveToView(view: SKView) {
@@ -50,6 +51,7 @@ class GameScene: SKScene {
     
     func drawGrid(gridSize: Float) {
         let cellSize:CGFloat = CGFloat((gridSize - 4 * GRID_MARGIN) / 3)
+        self.singleCellSize = cellSize
         
         println(cellSize)
         println(gridSize)
@@ -67,6 +69,20 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        
+       
+        let i = arc4random() % 3
+        let j = arc4random() % 3
+        
+        let gridCell = Cell(size: self.singleCellSize, number: 2)
+        let xPos:CGFloat = CGFloat(CGFloat(i) * self.singleCellSize + CGFloat(i + 1) * CGFloat(GRID_MARGIN)) + 10
+        let yPos:CGFloat = CGFloat(CGFloat(j) * (self.singleCellSize + CGFloat(GRID_MARGIN))) + 60 + CGFloat(GRID_MARGIN)
+        gridCell.position = CGPoint(x: xPos, y: yPos)
+        
+        self.addChild(gridCell)
+
+        
+        
         /*var path : CGMutablePath = CGPathCreateMutable()
         
         

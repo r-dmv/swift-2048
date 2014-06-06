@@ -15,9 +15,13 @@ class GameRect : SKShapeNode {
         super.init()
         self.path = CGPathCreateWithRoundedRect(CGRectMake(0, 0, width, height), 4, 4, nil)
         
-        self.fillColor = color
-        self.strokeColor = color
+        self.changeColor(color)
         
         self.position = CGPoint(x:0, y: 0)
+    }
+    
+    func changeColor(color: SKColor) {
+        self.fillColor = color
+        self.strokeColor = color
     }
 }
