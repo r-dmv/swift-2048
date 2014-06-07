@@ -25,10 +25,11 @@ class Cell : GameRect {
     }
     
     init(size: CGFloat, number: Int) {
-        super.init(color: self.getCurrentColor(), width: size, height: size)
+        super.init(color: self.getCurrentColor(), width: size, height: size, fromCenter: true)
         
         self._size = size
         self.number = number
+        //self.anchorPoint = CGPointMake(x: size / 2, y: size / 2)
     }
     
     func getCurrentColor() -> SKColor {
@@ -40,7 +41,7 @@ class Cell : GameRect {
         let myLabel = SKLabelNode(fontNamed:"HelveticaNeue-CondensedBlack")
         myLabel.text = String(number);
         myLabel.fontSize = 45;
-        myLabel.position = CGPoint(x:self.position.x + self._size / 2, y:self.position.y + self._size / 2 - 20);
+        myLabel.position = CGPoint(x:self.position.x, y:self.position.y - 20);
         
         return myLabel
     }

@@ -11,9 +11,14 @@ import Foundation
 import SpriteKit
 
 class GameRect : SKShapeNode {
-    init(color:SKColor, width: CGFloat, height: CGFloat) {
+    init(color:SKColor, width: CGFloat, height: CGFloat, fromCenter: Bool = false) {
         super.init()
-        self.path = CGPathCreateWithRoundedRect(CGRectMake(0, 0, width, height), 4, 4, nil)
+        if (fromCenter) {
+            self.path = CGPathCreateWithRoundedRect(CGRectMake(-width/2, -height/2, width, height), 4, 4, nil)
+        } else {
+            self.path = CGPathCreateWithRoundedRect(CGRectMake(0, 0, width, height), 4, 4, nil)
+        }
+        
         
         self.changeColor(color)
         

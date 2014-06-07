@@ -31,6 +31,7 @@ class GameScene: SKScene {
         
         println(node.position)
         self.addChild(node)*/
+       
         
     }
     
@@ -73,13 +74,23 @@ class GameScene: SKScene {
         let j = arc4random() % 3
         
         let gridCell = Cell(size: self.singleCellSize, number: 2)
-        let xPos:CGFloat = CGFloat(CGFloat(i) * self.singleCellSize + CGFloat(i + 1) * CGFloat(GRID_MARGIN)) + 10
-        let yPos:CGFloat = CGFloat(CGFloat(j) * (self.singleCellSize + CGFloat(GRID_MARGIN))) + 60 + CGFloat(GRID_MARGIN)
+        let xPos:CGFloat = CGFloat(CGFloat(i) * self.singleCellSize +
+            CGFloat(i + 1) * (CGFloat(GRID_MARGIN))) + 10 + self.singleCellSize / 2
+        
+        let yPos:CGFloat = CGFloat(CGFloat(j) * (self.singleCellSize + CGFloat(GRID_MARGIN))) + 60 + CGFloat(GRID_MARGIN) + self.singleCellSize / 2
+        
         gridCell.position = CGPoint(x: xPos, y: yPos)
+        
+        
+        let action = SKAction.sequence([SKAction.scaleBy(0.9, duration: 0), SKAction.scaleBy(1.111, duration: 0.15)])
+        gridCell.runAction(action)
+        
         
         self.addChild(gridCell)
         self.addChild(gridCell.getLabel())
-
+        
+        
+        
         
         
         /*var path : CGMutablePath = CGPathCreateMutable()
