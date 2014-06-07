@@ -12,17 +12,14 @@ class GameScene: SKScene {
     var counter: Float = 0
     var singleCellSize: CGFloat = 0
     let GRID_MARGIN: Float = 10
-    var swipeRightGesture: UISwipeGestureRecognizer?
+    
+    var gameField = GameField(rows: 4, columns: 4)
+    var cellsNumber: Int = 0
     
     override func didMoveToView(view: SKView) {
         self.drawBackground()
         
-        let gridCell = Cell(size: self.singleCellSize, number: 2)
-        gridCell.setCellPosition(Int(0), j:Int(0))
-        
-        self.addChild(gridCell)
-
-        gridCell.moveToPosition(0, col: 3)
+        self.addNewCell()
         
     }
     
@@ -57,10 +54,52 @@ class GameScene: SKScene {
             }
         }
     }
+    
+    
+    func addNewCell() {
+        var i = Int(arc4random() % 4)
+        var j = Int(arc4random() % 4)
         
+        while(self.gameField[i, j] != nil) {
+            i = Int(arc4random() % 4)
+            j = Int(arc4random() % 4)
+        }
+        
+        let cell = Cell(size: self.singleCellSize, number: 2)
+        cell.setCellPosition(i, j:j)
+        self.gameField[i, j] = cell
+        self.addChild(cell)
+        
+        self.cellsNumber++
+    }
+    
     
     func moveRight() {
-        NSLog("swiped")
+        var wereMoved: Bool = false
+        for i in 0..4 {
+            var lastFreeCell:Int = -1
+            for var j = 3; j >= 0; j-- {
+                if self.gameField[i, j] == nil {
+                    if lastFreeCell < 0 {
+                            lastFreeCell = j
+                    }
+                } else {
+                    if lastFreeCell > 0 {
+                        let cell = self.gameField[i, j]
+                        self.gameField[i, j] = nil
+                        self.gameField[i, lastFreeCell] = cell
+                        
+                        cell!.moveToPosition(i, col:lastFreeCell)
+                        lastFreeCell--
+                        wereMoved = true
+                    }
+                }
+            }
+        }
+        
+        if wereMoved {
+            self.addNewCell()
+        }
     }
     
     func moveLeft() {

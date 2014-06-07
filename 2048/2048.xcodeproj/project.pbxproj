@@ -15,6 +15,7 @@
 		0A21FFA31940EE61006D5AE9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A21FFA21940EE61006D5AE9 /* Images.xcassets */; };
 		0A21FFAF1940EE61006D5AE9 /* _048Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A21FFAE1940EE61006D5AE9 /* _048Tests.swift */; };
 		0A3D7D1D19425E0000993E09 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D7D1C19425E0000993E09 /* Cell.swift */; };
+		0A5E7275194377F900FE943F /* GameField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E7274194377F900FE943F /* GameField.swift */; };
 		0AFEE5241940F171007249E4 /* GameRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFEE5231940F171007249E4 /* GameRect.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		0A21FFAD1940EE61006D5AE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A21FFAE1940EE61006D5AE9 /* _048Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _048Tests.swift; sourceTree = "<group>"; };
 		0A3D7D1C19425E0000993E09 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		0A5E7274194377F900FE943F /* GameField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameField.swift; sourceTree = "<group>"; };
 		0AFEE5231940F171007249E4 /* GameRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameRect.swift; path = ../GameRect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 		0A21FF941940EE61006D5AE9 /* 2048 */ = {
 			isa = PBXGroup;
 			children = (
+				0A5E7274194377F900FE943F /* GameField.swift */,
 				0A3D7D1C19425E0000993E09 /* Cell.swift */,
 				0AFEE5231940F171007249E4 /* GameRect.swift */,
 				0A21FF971940EE61006D5AE9 /* AppDelegate.swift */,
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A5E7275194377F900FE943F /* GameField.swift in Sources */,
 				0A21FF9C1940EE61006D5AE9 /* GameScene.swift in Sources */,
 				0AFEE5241940F171007249E4 /* GameRect.swift in Sources */,
 				0A3D7D1D19425E0000993E09 /* Cell.swift in Sources */,
