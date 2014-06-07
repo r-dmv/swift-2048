@@ -13,6 +13,9 @@ import SpriteKit
 class Cell : GameRect {
     var _number: Int = 2
     var _size: CGFloat = 0
+    var label : SKLabelNode?
+    
+    let GRID_MARGIN:Float = 10 // bad
     
     var number: Int {
     get {
@@ -29,7 +32,18 @@ class Cell : GameRect {
         
         self._size = size
         self.number = number
-        //self.anchorPoint = CGPointMake(x: size / 2, y: size / 2)
+        
+        self.label = SKLabelNode(fontNamed:"HelveticaNeue-CondensedBlack")
+        self.label!.text = String(number)
+        self.label!.fontSize = self._size / 1.76
+
+        self.label!.position = CGPoint(x:0, y: -15)
+
+        self.addChild(self.label!)
+
+        let action = SKAction.sequence([SKAction.scaleBy(0.8, duration: 0), SKAction.scaleBy(1.25, duration: 0.15)])
+        
+        self.runAction(action)
     }
     
     func getCurrentColor() -> SKColor {
@@ -37,13 +51,24 @@ class Cell : GameRect {
     }
     
     
-    func getLabel() -> SKLabelNode {
-        let myLabel = SKLabelNode(fontNamed:"HelveticaNeue-CondensedBlack")
-        myLabel.text = String(number);
-        myLabel.fontSize = 45;
-        myLabel.position = CGPoint(x:self.position.x, y:self.position.y - 20);
+    func setCellPosition(i: Int, j: Int) {
+        let xPos:CGFloat = CGFloat(CGFloat(i) * self._size +
+            CGFloat(i + 1) * (CGFloat(GRID_MARGIN))) + 10 + self._size / 2
         
-        return myLabel
+        let yPos:CGFloat = CGFloat(CGFloat(j) * (self._size + CGFloat(GRID_MARGIN))) + 60 + CGFloat(GRID_MARGIN) + self._size / 2
+        
+        self.position = CGPoint(x: xPos, y: yPos)
+    }
+    
+    func moveToPosition(row: Int, col: Int) {
+        let xPos:CGFloat = CGFloat(CGFloat(row) * self._size +
+            CGFloat(row + 1) * (CGFloat(GRID_MARGIN))) + 10 + self._size / 2
+        
+        let yPos:CGFloat = CGFloat(CGFloat(col) * (self._size + CGFloat(GRID_MARGIN))) + 60 + CGFloat(GRID_MARGIN) + self._size / 2
+
+        let action = SKAction.sequence([SKAction.waitForDuration(3), SKAction.moveTo(CGPoint(x: xPos, y:yPos), duration: 0.15)])
+
+        self.runAction(action)
     }
     
 }
