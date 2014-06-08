@@ -103,20 +103,22 @@ class GameScene: SKScene {
                             
                             lastNumber = 0
                             wereMoved = true
+                            continue
                         } else {
                             lastPosition = j
                         }
-                    } else {
-                        lastPosition = j
-                        lastNumber = cell!.number
-                        if lastFreeCell > 0 {
-                            self.gameField[i, j] = nil
-                            self.gameField[i, lastFreeCell] = cell
-                            cell!.moveToPosition(i, col:lastFreeCell)
-                            lastPosition = lastFreeCell
-                            lastFreeCell--
-                            wereMoved = true
-                        }
+                    }
+                    
+                    lastPosition = j
+                    lastNumber = cell!.number
+                    if lastFreeCell > 0 {
+                        self.gameField[i, j] = nil
+                        self.gameField[i, lastFreeCell] = cell
+                        cell!.moveToPosition(i, col:lastFreeCell)
+                        lastPosition = lastFreeCell
+                        lastFreeCell--
+                        wereMoved = true
+                        
                     }
                     
                 }
@@ -132,9 +134,9 @@ class GameScene: SKScene {
         for i in 0..4 {
             var lastFreeCell:Int = -1
             var lastNumber: Int = 0
-            var lastPosition: Int = 0
+            var lastPosition: Int = -1
             
-            for var j = 0; j < 4; j++ {
+            for j in 0..4  {
                 if self.gameField[i, j] == nil {
                     if lastFreeCell < 0 {
                         lastFreeCell = j
@@ -156,20 +158,21 @@ class GameScene: SKScene {
                             
                             lastNumber = 0
                             wereMoved = true
+                            continue
                         } else {
                             lastPosition = j
                         }
-                    } else {
-                        lastPosition = j
-                        lastNumber = cell!.number
-                        if lastFreeCell >= 0 {
-                            self.gameField[i, j] = nil
-                            self.gameField[i, lastFreeCell] = cell
-                            cell!.moveToPosition(i, col:lastFreeCell)
-                            lastPosition = lastFreeCell
-                            lastFreeCell++
-                            wereMoved = true
-                        }
+                    }
+                    lastPosition = j
+                    lastNumber = cell!.number
+                    if lastFreeCell >= 0 {
+                        self.gameField[i, j] = nil
+                        self.gameField[i, lastFreeCell] = cell
+                        cell!.moveToPosition(i, col:lastFreeCell)
+                        lastPosition = lastFreeCell
+                        lastFreeCell++
+                        wereMoved = true
+                        
                     }
                     
                 }
@@ -181,6 +184,60 @@ class GameScene: SKScene {
     }
     
     func moveUp() {
+        var wereMoved: Bool = false
+        for j in 0..4 {
+            var lastFreeCell:Int = -1
+            var lastNumber: Int = 0
+            var lastPosition: Int = -1
+            
+            for i in 0..4  {
+                if self.gameField[i, j] == nil {
+                    if lastFreeCell < 0 {
+                        lastFreeCell = i
+                    }
+                } else {
+                    let cell = self.gameField[i, j]
+                    if lastNumber != 0 {
+                        if cell!.number == lastNumber {
+                            var remove = self.gameField[lastPosition, j]!
+                            remove.removeFromParent()
+                            cell!.removeFromParent()
+                            
+                            let newCell = Cell(size: self.singleCellSize, number: 2 * lastNumber)
+                            newCell.setCellPosition(lastPosition, j:j)
+                            self.addChild(newCell)
+                            
+                            self.gameField[i, j] = nil
+                            self.gameField[lastPosition, j] = newCell
+                            
+                            lastNumber = 0
+                            wereMoved = true
+                            continue
+                        } else {
+                            lastPosition = i
+                        }
+                    }
+                    lastPosition = i
+                    lastNumber = cell!.number
+                    if lastFreeCell >= 0 {
+                        self.gameField[i, j] = nil
+                        self.gameField[lastFreeCell, j] = cell
+                        cell!.moveToPosition(lastFreeCell, col:j)
+                        lastPosition = lastFreeCell
+                        lastFreeCell--
+                        wereMoved = true
+                        
+                    }
+                    
+                }
+            }
+        }
+        if wereMoved {
+            self.addNewCell()
+        }
+    }
+    
+    func moveDown() {
         var wereMoved: Bool = false
         for j in 0..4 {
             var lastFreeCell:Int = -1
@@ -205,24 +262,26 @@ class GameScene: SKScene {
                             self.addChild(newCell)
                             
                             self.gameField[i, j] = nil
-                            self.gameField[lastPosition, i] = newCell
+                            self.gameField[lastPosition, j] = newCell
                             
                             lastNumber = 0
                             wereMoved = true
+                            continue
                         } else {
                             lastPosition = i
                         }
-                    } else {
-                        lastPosition = i
-                        lastNumber = cell!.number
-                        if lastFreeCell > 0 {
-                            self.gameField[i, j] = nil
-                            self.gameField[lastFreeCell, j] = cell
-                            cell!.moveToPosition(lastFreeCell, col:j)
-                            lastPosition = lastFreeCell
-                            lastFreeCell--
-                            wereMoved = true
-                        }
+                    }
+                    
+                    lastPosition = i
+                    lastNumber = cell!.number
+                    if lastFreeCell > 0 {
+                        self.gameField[i, j] = nil
+                        self.gameField[lastFreeCell, j] = cell
+                        cell!.moveToPosition(lastFreeCell, col:j)
+                        lastPosition = lastFreeCell
+                        lastFreeCell++
+                        wereMoved = true
+                        
                     }
                     
                 }
@@ -232,9 +291,5 @@ class GameScene: SKScene {
             self.addNewCell()
         }
 
-    }
-    
-    func moveDown() {
-        NSLog("swiped")
     }
 }
