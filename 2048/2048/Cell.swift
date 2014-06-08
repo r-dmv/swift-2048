@@ -47,7 +47,17 @@ class Cell : GameRect {
     }
     
     func getCurrentColor() -> SKColor {
-        return SKColor(red: 242/255, green: 177/255, blue: 121/255, alpha: 1)
+        var color: SKColor = SKColor(red: 238/255, green: 228/255, blue: 218/255, alpha: 1)
+        switch self._number {
+            case 2: color = SKColor(red: 238/255, green: 228/255, blue: 218/255, alpha: 1)
+            case 4: color = SKColor(red: 237/255, green: 224/255, blue: 200/255, alpha: 1)
+            case 8: color = SKColor(red: 242/255, green: 177/255, blue: 121/255, alpha: 1)
+            case 16: color = SKColor(red: 245/255, green: 149/255, blue: 99/255, alpha: 1)
+            case 32: color = SKColor(red: 246/255, green: 124/255, blue: 59/255, alpha: 1)
+            case 64: color = SKColor(red: 246/255, green: 94/255, blue: 59/255, alpha: 1)
+            default: color = SKColor(red: 246/255, green: 124/255, blue: 95/255, alpha: 1)
+        }
+        return color
     }
     
     
