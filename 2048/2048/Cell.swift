@@ -15,6 +15,8 @@ class Cell : GameRect {
     var _size: CGFloat = 0
     var label : SKLabelNode?
     
+
+    
     let GRID_MARGIN:Float = 10 // bad
     
     var number: Int {
@@ -25,6 +27,7 @@ class Cell : GameRect {
         self._number = newNumber
         self.changeColor(self.getCurrentColor())
     }
+    
     }
     
     init(size: CGFloat, number: Int) {
